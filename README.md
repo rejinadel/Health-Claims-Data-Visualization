@@ -66,11 +66,9 @@ Which specialties generate the highest total claim amount?
 
 Which provider segments drive claim volume?
 
-Snip of Dashboard:
-<img width="1336" height="752" alt="image" src="https://github.com/user-attachments/assets/bf208cf1-b0e4-46ae-a54e-4a4c795b9551" />
-
-
-
 What is the distribution of claims by status (Paid, Pending, Denied)?
 
 How do claims vary by type (Routine, Emergency, Inpatient)?
+
+Snip of Dashboard:
+<img width="1336" height="752" alt="image" src="https://github.com/user-attachments/assets/bf208cf1-b0e4-46ae-a54e-4a4c795b9551" />
