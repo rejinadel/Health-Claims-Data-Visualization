@@ -1,72 +1,76 @@
 # Health-Claims-Data-Visualization
-The raw datasets consists of 17 columns and 4501 rows.
+A Dynamic Power BI Dashboard Built Using DAX & Business Rules
 
-This dataset contains synthetic healthcare claims data including patient, provider, claim, and financial details. 
-It can be used for analytics, reporting, and dashboarding.
+🏥 Project Overview
+This project presents a dynamic and interactive Healthcare Claims Analytics Dashboard developed in Power BI.The objective was to transform raw healthcare claims data into a structured, business-ready analytical model capable of answering financial, operational, and demographic questions through interactive visualizations.
 
-Removing the unnecessary columns like diagnostic code and Procedure code.The remaining columns are:
-ClaimID - Unique identifier for each claim. Typically a UUID (e.g., 10944daf-f7d5-4e1d-8216-72ffa609fe41).
-PatientID - Unique identifier for the patient submitting the claim.
-ProviderID - Unique identifier for the healthcare provider. UUID format.
-ClaimAmount - Amount billed or claimed for the service (numeric).
-ClaimDate - Date when the claim was submitted or processed.
-DiagnosisCode - Code representing the diagnosis (e.g., ICD code).
-ProcedureCode - Code representing the medical procedure performed.
-PatientAge - Age of the patient (numeric, integer).
-PatientGender - Gender of the patient (e.g., M/F).
-ProviderSpecialty - Medical specialty of the provider (e.g., Cardiology, Neurology).
-ClaimStatus - Status of the claim (e.g., Pending, Paid, Denied).
-PatientIncome - Annual income of the patient (numeric).
-PatientMaritalStatus - Marital status of the patient (e.g., Single, Married).
-PatientEmploymentStatus - Employment status of the patient (e.g., Employed, Retired, Student).
-ProviderLocation - City, town, or region where the provider is located.
-ClaimType - Type of claim (e.g., Routine, Emergency, Inpatient).
-ClaimSubmissionMethod - How the claim was submitted (e.g., Online, Paper, Phone).
+The dashboard enables stakeholders to:
+1.Monitor revenue trends
+2.Analyze claim distribution by provider and type
+3.Understand patient demographics
+4.Evaluate operational claim status
+5.Apply real-time filtering using slicers
 
-#Business questions
+🛠 Data Engineering & Transformation
+-Removed unnecessary columns
+-Standardized text columns (Provider Specialty, Claim Type, Claim Status)
+-Applied business logic to Employment & Marital Status
+-Created structured age group classifications
+-Validated Claim Amount integrity
+-Handled zero/null values appropriately
+-Removed duplicate records
+-Ensured consistent data types across fields
+-Verified date formatting and yearly grouping logic
 
-1️⃣ Financial / Cost Analysis Questions
+**Data Modeling & DAX Implementation**
+Core Financial Metrics
+Total Claims = COUNT(Claims[ClaimID])
 
-What is the total claim amount for a given period (month, quarter, year)?
+Total Claim Amount = SUM(Claims[ClaimAmount])
 
-What is the average claim amount per patient or per provider?
+Average Claim Amount = AVERAGE(Claims[ClaimAmount])
 
-Which providers or specialties generate the highest claim costs?
+Demographic Metrics
+Total Male = 
+CALCULATE(COUNT(Claims[ClaimID]), Claims[Gender] = "Male")
 
-How does claim amount vary by claim type (Routine, Emergency, Inpatient)?
+Total Female = 
+CALCULATE(COUNT(Claims[ClaimID]), Claims[Gender] = "Female")
 
-Are there outlier claims that are unusually high or low?
+Provider Analysis
+Total Claim Amount by Provider Specialty =
+SUM(Claims[ClaimAmount])
 
-2️⃣ Patient Analysis Questions
+Business Questions Answered
+1️⃣ Financial Analysis
 
-How many unique patients are submitting claims?
+What is the total claim revenue?
 
-What is the distribution of claims by patient age and gender?
+What is the average claim amount?
 
-How does patient income or employment status relate to claim amount or type?
+How does revenue vary by year?
 
-Are there repeat claim patterns for certain patients?
+Which claim types generate the highest revenue?
 
-3️⃣ Provider Analysis Questions
+Which provider specialties contribute most to total claims?
 
-Which providers or locations have the most claims?
+2️⃣ Patient Demographics
 
-Which specialties generate the most revenue?
+What is the gender distribution of claims?
 
-How many claims are pending, paid, or denied per provider?
+How does marital or employment status influence claim behavior?
 
-4️⃣ Claim Type / Operational Questions
+3️⃣ Provider Performance
 
-What percentage of claims are Routine, Emergency, or Inpatient?
+Which specialties generate the highest total claim amount?
 
-How does submission method (Online, Paper, Phone) affect claim status or processing time?
+Which provider segments drive claim volume?
 
-Are there trends in claims over time (monthly, quarterly)?
-5️⃣ Risk / Outlier / Compliance Questions
+Snip of Dashboard:
+<img width="1336" height="752" alt="image" src="https://github.com/user-attachments/assets/bf208cf1-b0e4-46ae-a54e-4a4c795b9551" />
 
-Are there patients or providers with unusually high claim amounts?
 
-Are there claims submitted by minors that need review?
 
-Identify claims that are pending for a long time.
+What is the distribution of claims by status (Paid, Pending, Denied)?
 
+How do claims vary by type (Routine, Emergency, Inpatient)?
